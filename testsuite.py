@@ -3,6 +3,7 @@ import pytest
 from main import check_char_aux
 from main import caps_switch
 
+
 def test_mytest():
     assert check_char_aux('a') == 0
     assert check_char_aux('b') == 0
@@ -58,36 +59,43 @@ def test_mytest():
     assert check_char_aux('Y') == 0
     assert check_char_aux('Z') == 0
 
-def test_error1():
-    assert check_char_aux ('a&') == 2
 
-def test_error2():
-    assert check_char_aux ('&') == 2
+def test_errorB():
+    assert check_char_aux('aa') == 1
+
+
+def test_errorC():
+    assert check_char_aux('%&') == 2
+
+
+def test_errorD():
+    assert check_char_aux(4.5) == 3
+
 
 def test_caps():
-    assert caps_switch('a') =='A'
-    assert caps_switch('b') =='B'
-    assert caps_switch('c') =='C'
-    assert caps_switch('d') =='D'
-    assert caps_switch('e') =='E'
-    assert caps_switch('f') =='F'
-    assert caps_switch('g') =='G'
-    assert caps_switch('h') =='H'
-    assert caps_switch('i') =='I'
-    assert caps_switch('j') =='J'
-    assert caps_switch('k') =='K'
-    assert caps_switch('l') =='L'
-    assert caps_switch('m') =='M'
-    assert caps_switch('n') =='N'
-    assert caps_switch('o') =='O'
-    assert caps_switch('p') =='P'
-    assert caps_switch('q') =='Q'
-    assert caps_switch('r') =='R'
-    assert caps_switch('s') =='S'
-    assert caps_switch('t') =='T'
-    assert caps_switch('u') =='U'
-    assert caps_switch('v') =='V'
-    assert caps_switch('w') =='W'
-    assert caps_switch('x') =='X'
-    assert caps_switch('y') =='Y'
-    assert caps_switch('z') =='Z'
+    assert caps_switch('a') == 'A'
+    assert caps_switch('b') == 'B'
+    assert caps_switch('c') == 'C'
+    assert caps_switch('d') == 'D'
+    assert caps_switch('e') == 'E'
+    assert caps_switch('f') == 'F'
+    assert caps_switch('g') == 'G'
+    assert caps_switch('h') == 'H'
+    assert caps_switch('i') == 'I'
+    assert caps_switch('j') == 'J'
+    assert caps_switch('k') == 'K'
+    assert caps_switch('l') == 'L'
+    assert caps_switch('m') == 'M'
+    assert caps_switch('n') == 'N'
+    assert caps_switch('o') == 'O'
+    assert caps_switch('p') == 'P'
+    assert caps_switch('q') == 'Q'
+    assert caps_switch('r') == 'R'
+    assert caps_switch('s') == 'S'
+    assert caps_switch('t') == 'T'
+    assert caps_switch('u') == 'U'
+    assert caps_switch('v') == 'V'
+    assert caps_switch('w') == 'W'
+    assert caps_switch('x') == 'X'
+    assert caps_switch('y') == 'Y'
+    assert caps_switch('z') == 'Z'

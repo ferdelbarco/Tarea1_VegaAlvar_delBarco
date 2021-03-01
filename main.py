@@ -1,54 +1,40 @@
-import re
+import re                                           # Se importan expresiones regulares
 
 
-def check_char_aux(_char):
-    if isinstance(_char, str):
-        if len(_char) == 1 and _char.isalpha():
-            return 0
-        elif _char.isalpha():
-            return 1
-        elif not _char.isalpha():
-            return 2
-    else:
-        return 3
+def check_char_aux(_char):                          #se define la funcion check_char_aux
+    if isinstance(_char, str):                      #si la variable _char ingresada es un string, isinstance devuelve
+                                                    # true y se pasa a la siguiente linea de codigo
+        if len(_char) == 1 and _char.isalpha():     #Si el largo del string de la variable _char es igual a uno y todos
+                                                    # los caracteres son letras
+            return 0                                # se retorna cero (como se indica en el enunciado)
+        elif _char.isalpha():                       # si lo anterior no se cumple pero la variable _char sigue siendo
+                                                    # un string se verifica si todos sus elementos son letras
+            return 1                                # y si es asi, se retorna 1, como error unico para cuando se
+                                                    # ha ingresado mas de un caracter.
+        elif not _char.isalpha():                   # Si esto ultimo no se cumpliera se busca si dentro del string aparecen
+                                                    # cualquier otro tipo de caracteres que no sean letras.
+            return 2                                # si es asi, se retorna un 2 como un Error unico, para cuando
+                                                    # se ingrasa un string con uno o mas caracteres fuera del rango a-z
+    else:                                           # si no se ingresa un string en la variable _char
+        return 3                                    # se retorna un 3 como Error unico para cuando se ingresa una
+                                                    # variable de tipo int, class, array, float, etc.
 
 
-def check_char(_char):
-    try:
-        _char = int(_char)
-        _char = float(_char)
 
-        return 'Usted ha ingresado un parametro que no es un caracter o string'
-
-    except ValueError:
-        if len(_char) == 1:
-            if re.search("[a-z]", _char.lower()):
-                return '0'
-            elif re.search("[A-Z]", _char):
-                return '0'
-            else:
-                return 'Usted ha ingresado uno o mas caracteres que no son parte del rango A-Z'
-        else:
-            if re.search("\\W", _char):
-                return 'Usted ha ingresado uno o mas caracteres que no son parte del rango A-Z'
-            elif re.search("[0-9]", _char):
-                return 'Usted ha ingresado uno o mas caracteres que no son parte del rango A-Z'
-            else:
-                return 'Usted ha ingresado mas de un caracter'
+def caps_switch(_char):                             # se define la funcion caps_switch, que recibe unaq variable
+                                                    # llamada _char
+    error = check_char_aux(_char)                   # se llama a la funcion anterior (check_char), y se asigna el parametro
+                                                    # "error" a lo que retorne la funcion check_char
+    if error == 0:                                  # si el valor asignado a "error" es igual a 0 se devuelve true y
+                                                    # se procede con el if
+        if re.search("[a-z]", _char):               # se utiliza una expresion regular para buscar si el caracter ingresado
+                                                    # en la variable _char esta en miniscula, si es asi
+            _char = _char.upper()                   # este caracter cambia a mayuscula con el comando .upper
+        else:                                       # si este no es el caso y la variable posee un caracter en mayuscula
+            _char = _char.lower()                   # este de igual manera se cambia a uno en minuscula, con la .lower
+    else:                                           # si el valor de "error" no es 0
+        return error                                # se retorna alguno de los 3 codigos de errores unicos que la funcion
+                                                    # check_chr_aux retornaba
+    return _char                                    # si no sucediera nada de lo anterior se retorna _char
 
 
-def caps_switch(_char):
-    error = check_char(_char)
-    if error == '0':
-        if re.search("[a-z]", _char):
-            _char = _char.upper()
-        else:
-            _char = _char.lower()
-    else:
-        return error
-
-    return _char
-
-
-print(caps_switch('a5'))
-print(caps_switch('B'))
