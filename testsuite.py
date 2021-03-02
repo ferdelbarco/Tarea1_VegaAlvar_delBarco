@@ -1,101 +1,42 @@
-import pytest
-
-from main import check_char_aux
-from main import caps_switch
-
-
-def test_mytest():
-    assert check_char_aux('a') == 0
-    assert check_char_aux('b') == 0
-    assert check_char_aux('c') == 0
-    assert check_char_aux('d') == 0
-    assert check_char_aux('e') == 0
-    assert check_char_aux('f') == 0
-    assert check_char_aux('g') == 0
-    assert check_char_aux('h') == 0
-    assert check_char_aux('i') == 0
-    assert check_char_aux('j') == 0
-    assert check_char_aux('k') == 0
-    assert check_char_aux('l') == 0
-    assert check_char_aux('m') == 0
-    assert check_char_aux('n') == 0
-    assert check_char_aux('o') == 0
-    assert check_char_aux('p') == 0
-    assert check_char_aux('q') == 0
-    assert check_char_aux('r') == 0
-    assert check_char_aux('s') == 0
-    assert check_char_aux('t') == 0
-    assert check_char_aux('u') == 0
-    assert check_char_aux('v') == 0
-    assert check_char_aux('w') == 0
-    assert check_char_aux('x') == 0
-    assert check_char_aux('y') == 0
-    assert check_char_aux('z') == 0
-
-    assert check_char_aux('A') == 0
-    assert check_char_aux('B') == 0
-    assert check_char_aux('C') == 0
-    assert check_char_aux('D') == 0
-    assert check_char_aux('E') == 0
-    assert check_char_aux('F') == 0
-    assert check_char_aux('G') == 0
-    assert check_char_aux('H') == 0
-    assert check_char_aux('I') == 0
-    assert check_char_aux('J') == 0
-    assert check_char_aux('K') == 0
-    assert check_char_aux('L') == 0
-    assert check_char_aux('M') == 0
-    assert check_char_aux('N') == 0
-    assert check_char_aux('O') == 0
-    assert check_char_aux('P') == 0
-    assert check_char_aux('Q') == 0
-    assert check_char_aux('R') == 0
-    assert check_char_aux('S') == 0
-    assert check_char_aux('T') == 0
-    assert check_char_aux('U') == 0
-    assert check_char_aux('V') == 0
-    assert check_char_aux('W') == 0
-    assert check_char_aux('X') == 0
-    assert check_char_aux('Y') == 0
-    assert check_char_aux('Z') == 0
+from main import check_char_aux  # se importan funciones del main
+from main import caps_switch  # se importan funciones del main
+import string  # se importa secuencia de caracteres
 
 
-def test_errorB():
-    assert check_char_aux('aa') == 1
+def test_mytest():  # se define una funcion para probar check_char_aux
+    for i in string.ascii_letters:  # se crea un ciclo
+        # se asigna a "i" una letra mayuscula o miniscula
+        assert check_char_aux(i) == 0  # se verifica que cada una de las letras
+        # en el codigo de check_char_aux de 0
 
 
-def test_errorC():
-    assert check_char_aux('%&') == 2
+def test_errorb():  # se define una funcion
+    # se prueba el caso del punto b del enunciado
+    assert check_char_aux('&%') == 1  # se verifica el caso de &%
+    # el cual deberia dar 2, pero se pide un caso negativo
+    # por lo que assert se compara con 1 en lugar de 2
 
 
-def test_errorD():
-    assert check_char_aux(4.5) == 3
+def test_errorc():  # se define una funcion
+    # se prueba el caso del punto c del enunciado
+    assert check_char_aux('aa') == 2  # se verifica el caso de aa
+    # el cual deberia dar 1, pero se pide un caso negativo
+    # por lo que assert se compara con 2 en lugar de 1
 
 
-def test_caps():
-    assert caps_switch('a') == 'A'
-    assert caps_switch('b') == 'B'
-    assert caps_switch('c') == 'C'
-    assert caps_switch('d') == 'D'
-    assert caps_switch('e') == 'E'
-    assert caps_switch('f') == 'F'
-    assert caps_switch('g') == 'G'
-    assert caps_switch('h') == 'H'
-    assert caps_switch('i') == 'I'
-    assert caps_switch('j') == 'J'
-    assert caps_switch('k') == 'K'
-    assert caps_switch('l') == 'L'
-    assert caps_switch('m') == 'M'
-    assert caps_switch('n') == 'N'
-    assert caps_switch('o') == 'O'
-    assert caps_switch('p') == 'P'
-    assert caps_switch('q') == 'Q'
-    assert caps_switch('r') == 'R'
-    assert caps_switch('s') == 'S'
-    assert caps_switch('t') == 'T'
-    assert caps_switch('u') == 'U'
-    assert caps_switch('v') == 'V'
-    assert caps_switch('w') == 'W'
-    assert caps_switch('x') == 'X'
-    assert caps_switch('y') == 'Y'
-    assert caps_switch('z') == 'Z'
+def test_errord():  # se define una funcion
+    # se prueba el caso del punto d del enunciado
+    assert check_char_aux('a') == 3  # se verifica el caso de a
+    # el cual deberia dar 0, pero se pide un caso negativo
+    # por lo que assert se compara con 3 en lugar de 0
+
+
+def test_caps():  # se define una funcion
+    for i in string.ascii_letters:  # cada ciclo se le asigna un valor
+        # nuevo de a-z y luego de A-Z a la variable "i"
+        x = i.lower()  # se signa una variable "x" que tiene
+        # el mismo caracter que alberga "i", pero en minuscula
+        if i == x:  # si "i" y "x" tienen el mismo caracter
+            x = x.upper()  # "x" pasa a ser mayuscula
+        assert caps_switch(i) == x  # se comprueba que
+        # caps_switch cambia el tamano de letra
