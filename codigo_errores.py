@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
-#Este codigo toma una lista y retorna otra en la que se eliminan los elementos "sandia" 
-
-import numpy  # Error 1: module imported but unused
+#Este codigo toma una lista y retorna otra en la que se eliminan los elementos "sandia"
 
 lista = ["banano", "sandia", "naranja", "mango", "melon"]
+listanueva = []
 
 for i in lista:
-    if i is not "sandia":  
-        # Error 2: use ==/!= to compare str, bytes, and int literals
-        listanueva.append(i)  # Error 3: undefined name
+    if i != "sandia":
+        listanueva.append(i)
 
 print(listanueva)
