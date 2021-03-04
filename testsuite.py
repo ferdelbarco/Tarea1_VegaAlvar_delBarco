@@ -12,23 +12,26 @@ def test_mytest():  # se define una funcion para probar check_char_aux
 
 def test_errorb():  # se define una funcion
     # se prueba el caso del punto b del enunciado
-    assert check_char_aux('&%') == 1  # se verifica el caso de &%
-    # el cual deberia dar 2, pero se pide un caso negativo
-    # por lo que assert se compara con 1 en lugar de 2
+    assert check_char_aux('aa') == 'ERROR_1: Se ingresó más de un caracter'
+    # se verifica el caso de aa
+    # el cual deberia dar el ERROR_1
+    # por lo que assert compara lo ingresado
 
 
 def test_errorc():  # se define una funcion
     # se prueba el caso del punto c del enunciado
-    assert check_char_aux('aa') == 2  # se verifica el caso de aa
-    # el cual deberia dar 1, pero se pide un caso negativo
-    # por lo que assert se compara con 2 en lugar de 1
+    assert check_char_aux('&%') == 'ERROR_2:Digitos no son parte del rango A-Z'
+    # se verifica el caso de &%
+    # el cual deberia dar el ERROR_2
+    # por lo que assert compara lo ingresado
 
 
 def test_errord():  # se define una funcion
     # se prueba el caso del punto d del enunciado
-    assert check_char_aux('a') == 3  # se verifica el caso de a
-    # el cual deberia dar 0, pero se pide un caso negativo
-    # por lo que assert se compara con 3 en lugar de 0
+    assert check_char_aux(4.5) == 'ERROR_3: No se ingresó un caracter o string'
+    # se verifica el caso de 4.5 un flotante
+    # el cual deberia dar el ERROR_3
+    # por lo que assert compara lo ingresado
 
 
 def test_caps():  # se define una funcion

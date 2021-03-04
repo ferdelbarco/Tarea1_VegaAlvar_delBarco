@@ -6,17 +6,20 @@ def check_char_aux(_char):  # se define la funcion check_char_aux
         # isinstance devuelve true y se pasa a la siguiente linea de codigo
         if len(_char) == 1 and _char.isalpha():  # Si el largo del string
             # es igual a uno y todos los caracteres son letras
-            return 0  # se retorna cero (como se indica en el enunciado)
+            return 0  # se retorna cero
         elif _char.isalpha():  # si lo anterior no se cumple pero _char sigue
             # siendo un string se verifica si todos sus elementos son letras
-            return 1  # si es asi, se retorna 1, como error unico para cuando
+            return 'ERROR_1: Se ingresó más de un caracter'
+            # si es asi, se retorna 1, como error unico para cuando
             # se ha ingresado mas de un caracter.
         elif not _char.isalpha():  # se busca si dentro del string aparece
             # cualquier otro tipo de caracteres que no sean letras.
-            return 2  # se retorna un 2 como un Error unico, para cuando
+            return 'ERROR_2:Digitos no son parte del rango A-Z'
+            # se retorna un Error unico, para cuando
             # se ingrasa un string con uno o mas caracteres fuera del rango a-z
     else:  # si no se ingresa un string en la variable _char
-        return 3  # se retorna un 3 como Error unico para cuando se ingresa una
+        return 'ERROR_3: No se ingresó un caracter o string'
+        # se retorna un Error unico para cuando se ingresa una
         # variable de tipo int, class, array, float, etc.
 
 
